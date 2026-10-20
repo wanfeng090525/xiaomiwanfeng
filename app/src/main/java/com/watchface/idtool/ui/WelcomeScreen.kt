@@ -1184,7 +1184,7 @@ internal fun UpdateDialog(
                         modifier = Modifier.fillMaxWidth()
                     )
                     Spacer(Modifier.height(14.dp))
-                    val releaseUrl = "https://github.com/wanfeng090525/Xiaomi-BiaoPan/releases/latest"
+                    val releaseUrl = "https://github.com/wanfeng090525/xiaomiwanfeng/releases/latest"
                     val context = LocalContext.current
                     val descStyle = SpanStyle(color = Color(0xFFD8DADE))
                     val linkStyle = SpanStyle(

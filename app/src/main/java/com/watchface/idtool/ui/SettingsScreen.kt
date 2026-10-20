@@ -205,7 +205,7 @@ fun SettingsScreen(
                     onClick = {
                         runCatching {
                             context.startActivity(
-                                Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/wanfeng090525/XiaoMi-Clock-dial"))
+                                Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/wanfeng090525/xiaomiwanfeng"))
                             )
                         }
                     },

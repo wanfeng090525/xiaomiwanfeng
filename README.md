@@ -28,15 +28,15 @@
 
 ## 📦 安装
 
-前往 [Releases](https://github.com/wanfeng090525/XiaoMi-Clock-dial/releases) 下载最新 APK 安装即可。
+前往 [Releases](https://github.com/wanfeng090525/xiaomiwanfeng/releases) 下载最新 APK 安装即可。
 
 自行构建：
 
-bash
-git clone https://github.com/wanfeng090525/XiaoMi-Clock-dial.git
-cd XiaoMi-Clock-dial
+```bash
+git clone https://github.com/wanfeng090525/xiaomiwanfeng.git
+cd xiaomiwanfeng
 ./build.sh
-
+```
 
 产物输出在 `app/build/outputs/apk/` 目录下。
 
