@@ -19,6 +19,8 @@ import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
@@ -83,7 +85,6 @@ import com.watchface.idtool.RecordStore
 import com.watchface.idtool.UiState
 import com.watchface.idtool.WatchfaceParser
 import androidx.compose.ui.draw.clip
-import androidx.compose.foundation.background
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.graphicsLayer
 
@@ -601,14 +602,7 @@ private fun InfoDivider() {
         modifier = Modifier
             .fillMaxWidth()
             .height(1.dp)
-            .padding(vertical = 0.dp)
-            .glass(
-                RoundedCornerShape(1.dp),
-                rememberGlassColors(
-                    tintTop = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f),
-                    tintBottom = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.20f)
-                )
-            )
+            .background(MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.55f))
     )
 }
 
@@ -634,31 +628,24 @@ private fun GlassTextField(
         animationSpec = tween(240),
         label = "fieldBorder"
     )
-    val shape = RoundedCornerShape(14.dp)
-    val colors = rememberGlassColors(
-        tintTop = if (focused) primary.copy(alpha = 0.10f) else null,
-        tintBottom = if (focused) primary.copy(alpha = 0.04f) else null
+    val shape = RoundedCornerShape(12.dp)
+    val fieldBackground by animateColorAsState(
+        targetValue = if (focused) MaterialTheme.colorScheme.surface else IOSPalette.cardSecondary,
+        animationSpec = tween(240),
+        label = "fieldBg"
     )
 
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .glassShadow(4.dp, shape)
-            .liquidGlass(
-                shape = shape,
-                blurRadius = 6.dp,
-                lensHeight = 12.dp,
-                lensAmount = 20.dp
-            )
-            .glass(shape, colors)
+            .clip(shape)
+            .background(fieldBackground)
             .drawBehind {
                 val outline = shape.createOutline(size, layoutDirection, this)
                 drawOutline(
                     outline = outline,
-                    brush = Brush.linearGradient(
-                        listOf(borderColor.copy(alpha = 0.8f), borderColor.copy(alpha = 0.3f))
-                    ),
-                    style = Stroke(width = if (focused) 1.6.dp.toPx() else 1.1.dp.toPx())
+                    color = borderColor,
+                    style = Stroke(width = if (focused) 1.5.dp.toPx() else 1.dp.toPx())
                 )
             }
             .padding(horizontal = 14.dp, vertical = 13.dp)
@@ -804,21 +791,13 @@ internal fun IconBadge(
     size: androidx.compose.ui.unit.Dp = 36.dp,
     iconSize: androidx.compose.ui.unit.Dp = 18.dp
 ) {
-    // 图标使用传入的语义 tint（iOS 设置风格：彩色图标 + 极淡柔光玻璃底）
+    // 图标使用传入的语义 tint（极简风：12% 同色圆底 + 1px 描边）
     Box(
         modifier = Modifier
             .size(size)
-            .glow(Color.White.copy(alpha = 0.13f), radiusFraction = 1.4f)
-            .liquidGlass(
-                CircleShape,
-                blurRadius = 4.dp,
-                lensHeight = 6.dp,
-                lensAmount = 10.dp
-            )
-            .glass(
-                CircleShape,
-                rememberGlassColors()
-            ),
+            .clip(CircleShape)
+            .background(tint.copy(alpha = 0.12f))
+            .border(1.dp, tint.copy(alpha = 0.10f), CircleShape),
         contentAlignment = Alignment.Center
     ) {
         Icon(

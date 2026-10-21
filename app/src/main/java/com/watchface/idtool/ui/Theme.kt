@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.sp
 import com.watchface.idtool.R
 
 // ====================================================================
-// 字体（保留原 Barlow / 几何黑体，全语言覆盖）
+// 字体（保留 Barlow 几何无衬线，全语言覆盖）
 // ====================================================================
 
 val AppFonts = FontFamily(
@@ -33,92 +33,97 @@ val NumericFonts = FontFamily(
 )
 
 // ====================================================================
-// iOS 设计令牌（Design Tokens）
+// 「墨白」极简设计令牌（Ink & Paper Design Tokens）
+//
+// 设计语言：现代 SaaS 工具风 —— 大面积留白、纯白平面卡片、
+// 1px 发丝描边代替投影、单一靛蓝主色、克制的语义色。
 //
 // 层级模型（从下到上）：
-//   groupedBackground  #F2F2F7  页面底色
-//   card               #FFFFFF  InsetGrouped 卡片
-//   separator          #E5E5EA  1px 项间分割线
-//   label              #000000  主文本
-//   secondaryLabel     #8E8E93  次级文本 / 数值
-//   tint               #007AFF  高亮（链接、开关、选中）
-//   capsuleSelected    #E5F0FF  TabBar 选中胶囊底
+//   groupedBackground  #F6F6F8  页面底色（极浅中性灰）
+//   card               #FFFFFF  纯白平面卡片（1px #E7E7EB 描边）
+//   separator          #E7E7EB  1px 分割线 / 描边
+//   label              #17181C  主文本（近黑，比纯黑柔和）
+//   secondaryLabel     #6E717A  次级文本 / 数值
+//   tint               #3D6DF5  唯一主色（现代靛蓝）
+//   capsuleSelected    #EDF1FE  选中态浅靛蓝底
 // ====================================================================
 
 object IOSPalette {
 
     // ---- 层级底色 ----
-    /** 页面底色（iOS grouped 背景） */
-    val groupedBackground = Color(0xFFF2F2F7)
+    /** 页面底色（极浅中性灰，衬托白卡） */
+    val groupedBackground = Color(0xFFF6F6F8)
 
-    /** 卡片底色 */
+    /** 卡片底色（纯白平面） */
     val card = Color(0xFFFFFFFF)
 
     /** 次级卡片 / 嵌插槽位底（如输入框、代码块） */
-    val cardSecondary = Color(0xFFF9F9FB)
+    val cardSecondary = Color(0xFFFAFAFB)
 
-    /** TabBar 胶囊底 */
+    /** 底部导航条底色 */
     val tabBar = Color(0xFFFFFFFF)
 
-    /** TabBar 选中胶囊底（中性半透明灰，iOS quaternary fill 风格的透明光效） */
-    val capsuleSelected = Color(0x1F767680)
+    /** 选中态底（浅靛蓝，替代半透明灰光效） */
+    val capsuleSelected = Color(0xFFEDF1FE)
 
     // ---- 分割线 ----
-    /** 项间 1px 分割线 */
-    val separator = Color(0xFFE5E5EA)
+    /** 1px 分割线 / 卡片描边 */
+    val separator = Color(0xFFE7E7EB)
 
-    /** 卡片内缩进后的分割线起点留白后的视觉变体 */
-    val separatorSoft = Color(0xFFEFEFF4)
+    /** 更柔和的分割线变体（卡片内缩进场景） */
+    val separatorSoft = Color(0xFFF0F0F3)
 
     // ---- 文本 ----
-    val label = Color(0xFF000000)
-    val secondaryLabel = Color(0xFF8E8E93)
-    val tertiaryLabel = Color(0xFFC7C7CC)
+    /** 主文本：近黑（比纯黑更柔和，长文本不刺眼） */
+    val label = Color(0xFF17181C)
+    val secondaryLabel = Color(0xFF6E717A)
+    val tertiaryLabel = Color(0xFFA9ACB4)
 
     // ---- 高亮 ----
-    val tint = Color(0xFF007AFF)
-    val destructive = Color(0xFFFF3B30)
-    val success = Color(0xFF34C759)
-    val warning = Color(0xFFFF9500)
+    /** 唯一主色：现代靛蓝 */
+    val tint = Color(0xFF3D6DF5)
+    val destructive = Color(0xFFE5484D)
+    val success = Color(0xFF1DA75A)
+    val warning = Color(0xFFE28800)
 
-    // ---- 彩色图标瓦片底（红橙黄绿蓝紫）----
-    val tileRed = Color(0xFFFF3B30)
-    val tileOrange = Color(0xFFFF9500)
-    val tileYellow = Color(0xFFFFCC00)
-    val tileGreen = Color(0xFF34C759)
-    val tileBlue = Color(0xFF007AFF)
-    val tilePurple = Color(0xFFAF52DE)
-    val tileTeal = Color(0xFF30B0C7)
-    val tileIndigo = Color(0xFF5856D6)
-    val tileGray = Color(0xFF8E8E93)
-    val purple = Color(0xFFAF52DE)
+    // ---- 彩色图标瓦片底（低饱和现代色板）----
+    val tileRed = Color(0xFFE5484D)
+    val tileOrange = Color(0xFFE28800)
+    val tileYellow = Color(0xFFD9B60F)
+    val tileGreen = Color(0xFF1DA75A)
+    val tileBlue = Color(0xFF3D6DF5)
+    val tilePurple = Color(0xFF8B5CF6)
+    val tileTeal = Color(0xFF0E9BA8)
+    val tileIndigo = Color(0xFF5B5BD6)
+    val tileGray = Color(0xFF6E717A)
+    val purple = Color(0xFF8B5CF6)
 
     /** 瓦片内图标统一白色 */
     val tileGlyph = Color(0xFFFFFFFF)
 
     // ---- 交互 ----
-    /** 按下时整体透明度（iOS Active state，26 风格更轻透） */
-    val pressedOpacity = 0.65f
-    val pressedOpacityStrong = 0.45f
+    /** 按下时整体透明度（平面卡片的轻按压态） */
+    val pressedOpacity = 0.72f
+    val pressedOpacityStrong = 0.55f
 
-    // ---- 圆角 ----
-    /** InsetGrouped 卡片圆角（iOS 26 连续大圆角观感） */
-    val cardRadius = 26.dp
+    // ---- 圆角（现代简约：中等圆角，干净利落）----
+    /** 卡片圆角 */
+    val cardRadius = 18.dp
     /** ListItem 高亮块圆角 */
-    val rowRadius = 12.dp
+    val rowRadius = 10.dp
     /** 彩色图标瓦片圆角 */
-    val tileRadius = 9.dp
-    /** TabBar 胶囊圆角 */
-    val tabBarRadius = 28.dp
-    /** 圆形搜索按钮半径（直径 52dp → 26dp） */
-    val fabRadius = 26.dp
+    val tileRadius = 8.dp
+    /** 底部导航条圆角 */
+    val tabBarRadius = 22.dp
+    /** 圆形设置按钮半径 */
+    val fabRadius = 21.dp
 }
 
 // ====================================================================
-// Material3 颜色方案（映射到 iOS 令牌）
+// Material3 颜色方案（映射到「墨白」令牌）
 // ====================================================================
 
-private val IOSLightColors = lightColorScheme(
+private val MinimalLightColors = lightColorScheme(
     primary = IOSPalette.tint,
     onPrimary = Color.White,
     primaryContainer = IOSPalette.capsuleSelected,
@@ -133,7 +138,7 @@ private val IOSLightColors = lightColorScheme(
     onTertiaryContainer = IOSPalette.label,
     error = IOSPalette.destructive,
     onError = Color.White,
-    errorContainer = Color(0xFFFFEBE9),
+    errorContainer = Color(0xFFFDECEC),
     onErrorContainer = IOSPalette.destructive,
     background = IOSPalette.groupedBackground,
     onBackground = IOSPalette.label,
@@ -146,13 +151,13 @@ private val IOSLightColors = lightColorScheme(
 )
 
 // ====================================================================
-// 排版（iOS 规格：17pt 大标题 / 17pt 正文 / 13pt 次级 / 11pt 脚注）
+// 排版（现代简约规格：紧凑行高、中强字重层级）
 // ====================================================================
 
-private fun iosTextStyle(
+private fun minimalTextStyle(
     weight: FontWeight,
-    size: Int,
-    line: Int,
+    size: Float,
+    line: Float,
     spacing: Float = 0f
 ) = TextStyle(
     fontFamily = AppFonts,
@@ -162,34 +167,34 @@ private fun iosTextStyle(
     letterSpacing = spacing.sp
 )
 
-private val IOSTypography = Typography(
-    displayLarge = iosTextStyle(FontWeight.Bold, 32, 38, -0.4f),
-    displayMedium = iosTextStyle(FontWeight.Bold, 28, 34, -0.3f),
-    displaySmall = iosTextStyle(FontWeight.Bold, 24, 30, -0.2f),
-    headlineLarge = iosTextStyle(FontWeight.SemiBold, 22, 28, -0.2f),
-    headlineMedium = iosTextStyle(FontWeight.SemiBold, 20, 26, -0.2f),
-    headlineSmall = iosTextStyle(FontWeight.SemiBold, 17, 22),
-    titleLarge = iosTextStyle(FontWeight.Medium, 17, 22, -0.2f),
-    titleMedium = iosTextStyle(FontWeight.Medium, 16, 21, -0.1f),
-    titleSmall = iosTextStyle(FontWeight.Medium, 15, 20, -0.1f),
-    bodyLarge = iosTextStyle(FontWeight.Normal, 17, 22, -0.2f),
-    bodyMedium = iosTextStyle(FontWeight.Normal, 15, 20, -0.1f),
-    bodySmall = iosTextStyle(FontWeight.Normal, 13, 18),
-    labelLarge = iosTextStyle(FontWeight.Medium, 15, 20, -0.1f),
-    labelMedium = iosTextStyle(FontWeight.Normal, 13, 18, -0.05f),
-    labelSmall = iosTextStyle(FontWeight.Normal, 11, 14, 0.06f)
+private val MinimalTypography = Typography(
+    displayLarge = minimalTextStyle(FontWeight.Bold, 28, 34, -0.3f),
+    displayMedium = minimalTextStyle(FontWeight.Bold, 24, 30, -0.3f),
+    displaySmall = minimalTextStyle(FontWeight.Bold, 22, 28, -0.2f),
+    headlineLarge = minimalTextStyle(FontWeight.SemiBold, 21, 27, -0.2f),
+    headlineMedium = minimalTextStyle(FontWeight.SemiBold, 19, 25, -0.2f),
+    headlineSmall = minimalTextStyle(FontWeight.SemiBold, 17, 22),
+    titleLarge = minimalTextStyle(FontWeight.Medium, 17, 22, -0.2f),
+    titleMedium = minimalTextStyle(FontWeight.Medium, 15.5, 21, -0.1f),
+    titleSmall = minimalTextStyle(FontWeight.Medium, 14.5, 20, -0.1f),
+    bodyLarge = minimalTextStyle(FontWeight.Normal, 16, 22, -0.1f),
+    bodyMedium = minimalTextStyle(FontWeight.Normal, 14.5, 20, -0.1f),
+    bodySmall = minimalTextStyle(FontWeight.Normal, 13, 18),
+    labelLarge = minimalTextStyle(FontWeight.Medium, 14.5, 20, -0.1f),
+    labelMedium = minimalTextStyle(FontWeight.Normal, 13, 18, -0.05f),
+    labelSmall = minimalTextStyle(FontWeight.Normal, 11, 14, 0.06f)
 )
 
 private val AppShapes = Shapes(
     extraSmall = RoundedCornerShape(6.dp),
     small = RoundedCornerShape(10.dp),
-    medium = RoundedCornerShape(14.dp),
-    large = RoundedCornerShape(18.dp),
-    extraLarge = RoundedCornerShape(24.dp)
+    medium = RoundedCornerShape(12.dp),
+    large = RoundedCornerShape(16.dp),
+    extraLarge = RoundedCornerShape(20.dp)
 )
 
 /**
- * iOS 浅色主题（固定浅色，参照系统「设置」App）。
+ * 「墨白」极简浅色主题（固定浅色）。
  */
 @Composable
 fun WatchFaceTheme(
@@ -197,8 +202,8 @@ fun WatchFaceTheme(
     content: @Composable () -> Unit
 ) {
     MaterialTheme(
-        colorScheme = IOSLightColors,
-        typography = IOSTypography,
+        colorScheme = MinimalLightColors,
+        typography = MinimalTypography,
         shapes = AppShapes,
         content = content
     )
