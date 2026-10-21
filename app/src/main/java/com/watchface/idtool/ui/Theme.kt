@@ -168,21 +168,21 @@ private fun minimalTextStyle(
 )
 
 private val MinimalTypography = Typography(
-    displayLarge = minimalTextStyle(FontWeight.Bold, 28, 34, -0.3f),
-    displayMedium = minimalTextStyle(FontWeight.Bold, 24, 30, -0.3f),
-    displaySmall = minimalTextStyle(FontWeight.Bold, 22, 28, -0.2f),
-    headlineLarge = minimalTextStyle(FontWeight.SemiBold, 21, 27, -0.2f),
-    headlineMedium = minimalTextStyle(FontWeight.SemiBold, 19, 25, -0.2f),
-    headlineSmall = minimalTextStyle(FontWeight.SemiBold, 17, 22),
-    titleLarge = minimalTextStyle(FontWeight.Medium, 17, 22, -0.2f),
-    titleMedium = minimalTextStyle(FontWeight.Medium, 15.5, 21, -0.1f),
-    titleSmall = minimalTextStyle(FontWeight.Medium, 14.5, 20, -0.1f),
-    bodyLarge = minimalTextStyle(FontWeight.Normal, 16, 22, -0.1f),
-    bodyMedium = minimalTextStyle(FontWeight.Normal, 14.5, 20, -0.1f),
-    bodySmall = minimalTextStyle(FontWeight.Normal, 13, 18),
-    labelLarge = minimalTextStyle(FontWeight.Medium, 14.5, 20, -0.1f),
-    labelMedium = minimalTextStyle(FontWeight.Normal, 13, 18, -0.05f),
-    labelSmall = minimalTextStyle(FontWeight.Normal, 11, 14, 0.06f)
+    displayLarge = minimalTextStyle(FontWeight.Bold, 28f, 34f, -0.3f),
+    displayMedium = minimalTextStyle(FontWeight.Bold, 24f, 30f, -0.3f),
+    displaySmall = minimalTextStyle(FontWeight.Bold, 22f, 28f, -0.2f),
+    headlineLarge = minimalTextStyle(FontWeight.SemiBold, 21f, 27f, -0.2f),
+    headlineMedium = minimalTextStyle(FontWeight.SemiBold, 19f, 25f, -0.2f),
+    headlineSmall = minimalTextStyle(FontWeight.SemiBold, 17f, 22f),
+    titleLarge = minimalTextStyle(FontWeight.Medium, 17f, 22f, -0.2f),
+    titleMedium = minimalTextStyle(FontWeight.Medium, 15.5f, 21f, -0.1f),
+    titleSmall = minimalTextStyle(FontWeight.Medium, 14.5f, 20f, -0.1f),
+    bodyLarge = minimalTextStyle(FontWeight.Normal, 16f, 22f, -0.1f),
+    bodyMedium = minimalTextStyle(FontWeight.Normal, 14.5f, 20f, -0.1f),
+    bodySmall = minimalTextStyle(FontWeight.Normal, 13f, 18f),
+    labelLarge = minimalTextStyle(FontWeight.Medium, 14.5f, 20f, -0.1f),
+    labelMedium = minimalTextStyle(FontWeight.Normal, 13f, 18f, -0.05f),
+    labelSmall = minimalTextStyle(FontWeight.Normal, 11f, 14f, 0.06f)
 )
 
 private val AppShapes = Shapes(
