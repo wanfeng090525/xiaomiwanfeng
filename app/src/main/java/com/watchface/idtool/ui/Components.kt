@@ -56,6 +56,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.drawOutline
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.asImageBitmap
@@ -539,14 +540,14 @@ fun GlassIconButton(
 ) {
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
-    val alpha by animateFloatAsState(
+    val iconBtnAlpha by animateFloatAsState(
         targetValue = if (pressed) IOSPalette.pressedOpacity else 1f,
         animationSpec = tween(90),
         label = "iconBtnAlpha"
     )
     Box(
         modifier = modifier
-            .graphicsLayer { alpha = alpha }
+            .graphicsLayer { alpha = iconBtnAlpha }
             .glass(CircleShape, rememberGlassColors())
             .clickable(interactionSource = interaction, indication = null) {
                 onClick()
@@ -789,7 +790,8 @@ fun GlassFabButton(
                         .clip(CircleShape)
                         .background(IOSPalette.card)
                         .drawBehind {
-                            val outline = CircleShape.createOutline(size, layoutDirection, this)
+                            // this.size = DrawScope 的 Size（外层 size 参数为 Dp，已被遮蔽）
+                            val outline = CircleShape.createOutline(this.size, layoutDirection, this)
                             drawOutline(outline, color = IOSPalette.separator, style = Stroke(width = 1.dp.toPx()))
                         }
                 }
