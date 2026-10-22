@@ -38,7 +38,9 @@ android {
         System.getenv(env)?.takeIf { it.isNotBlank() } ?: signingProps.getProperty(key)
 
     val releaseStoreFile = file(signingValue("storeFile", "SIGNING_STORE_FILE") ?: "keystore/watchface.jks")
-    val hasReleaseKeystore = releaseStoreFile.exists()
+    // 注意：CI 在 Secrets 缺失时仍会写出 0 字节的 .jks（base64 -d 空输入），
+    // 因此除 exists() 外还需检查文件非空，否则签名配置会因缺少 storePassword 崩溃
+    val hasReleaseKeystore = releaseStoreFile.exists() && releaseStoreFile.length() > 0
 
     signingConfigs {
         create("release") {

@@ -113,7 +113,11 @@ jobs:
       - name: 还原签名密钥（来自 Secrets）
         run: |
           mkdir -p app/keystore
-          printf '%s' "${{ secrets.SIGNING_KEYSTORE_BASE64 }}" | base64 -d > app/keystore/watchface.jks
+          if [ -z "${{ secrets.SIGNING_KEYSTORE_BASE64 }}" ]; then
+            echo "::warning::仓库未配置签名 Secrets（SIGNING_KEYSTORE_BASE64 / SIGNING_STORE_PASSWORD / SIGNING_KEY_ALIAS / SIGNING_KEY_PASSWORD），本次 Release 将产出【未签名】APK，无法直接安装。请在仓库 Settings → Secrets and variables → Actions 中配置后重新触发。"
+          else
+            printf '%s' "${{ secrets.SIGNING_KEYSTORE_BASE64 }}" | base64 -d > app/keystore/watchface.jks
+          fi
 
       # 组装 Gradle 任务与参数：
       # - Debug 包：默认不构建，输入选"开启"才追加 assembleDebug
